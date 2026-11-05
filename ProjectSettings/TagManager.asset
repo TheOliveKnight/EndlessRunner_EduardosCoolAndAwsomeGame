@@ -9,6 +9,8 @@ TagManager:
   - Collectible
   - Powerup
   - Background
+  - Ground
+  - FloorGround
   layers:
   - Default
   - TransparentFX
