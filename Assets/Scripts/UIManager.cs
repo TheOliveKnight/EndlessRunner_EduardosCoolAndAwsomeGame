@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
    private Label _scoreLabel;
    private Label _timeLabel;
    private RadioButtonGroup _timerRadio;
-   private Button _startButton;
+   private Button _StartButton;
 
 
    // UI Fields
@@ -44,16 +44,16 @@ public class UIManager : MonoBehaviour
        _scoreLabel = root.Q<Label>("scoreLabel");
        _timeLabel = root.Q<Label>("timeLabel");
        _timerRadio = root.Q<RadioButtonGroup>("timerRadio");
-       _startButton = root.Q<Button>("startButton");
+       _StartButton = root.Q<Button>("_StartButton");
        
        // Hid the countdown time before starting 
        _timeLabel.style.visibility = Visibility.Hidden;
 
 
        // Register button click listener
-       if (_startButton != null)
+       if (_StartButton != null)
        {
-           _startButton.clicked += OnStartButtonClicked;
+           _StartButton.clicked += OnStartButtonClicked;
        }
    }
 
@@ -61,9 +61,9 @@ public class UIManager : MonoBehaviour
    private void OnDisable()
    {
        // Unregister to avoid memory leaks/null callbacks
-       if (_startButton != null)
+       if (_StartButton != null)
        {
-           _startButton.clicked -= OnStartButtonClicked;
+           _StartButton.clicked -= OnStartButtonClicked;
        }
    }
 
@@ -88,7 +88,7 @@ public class UIManager : MonoBehaviour
            InvokeRepeating("Timer", 0, 1);
        }
        _timerRadio.style.visibility = Visibility.Hidden;
-       _startButton.style.visibility = Visibility.Hidden;
+       _StartButton.style.visibility = Visibility.Hidden;
        GameManager.Instance.gameOver = false;
        GameManager.Instance.startGame = true;
    }
@@ -125,7 +125,7 @@ public class UIManager : MonoBehaviour
    public void GameOver()
    {
        GameManager.Instance.gameOver = true;
-       Debug.Log($"{GameManager.Instance.gameOver}");
+       //Debug.Log($"{GameManager.Instance.gameOver}");
        _timeLabel.style.visibility = Visibility.Visible;
        _timeLabel.text = "Game Over";
    }

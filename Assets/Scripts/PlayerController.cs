@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
    private bool isOnGround;
    private float animationSpeed;
    [SerializeField] private MeshRenderer playerMesh;
-
    // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
    {
@@ -34,8 +33,10 @@ public class PlayerController : MonoBehaviour
            playerAnimator.SetFloat("Speed_f", 0);
            dirtParticle.Stop();
        }
-
-
+       if (playerAnimator != null && !GameManager.Instance.gameOver)
+{
+   // Debug.Log($"Animator IsGroundedBro: {playerAnimator.GetBool("IsGroundedBro")}");
+}
        if (GameManager.Instance.startGame)
        {
            StartGame();
@@ -56,7 +57,9 @@ public class PlayerController : MonoBehaviour
    {
        if (ctx.performed && isOnGround && !GameManager.Instance.gameOver)
        {
+           Debug.Log("Has tried to Jump");
            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+           Debug.Log($"Has tried to Jump and added force {Vector3.up} {jumpForce} {ForceMode.Impulse}");
            isOnGround = false;
            playerAnimator.SetBool("IsGroundedBro", false);
            dirtParticle.Stop();
@@ -68,6 +71,7 @@ public class PlayerController : MonoBehaviour
    {
        if (collision.gameObject.name == "Ground" && !GameManager.Instance.gameOver)
        {
+           Debug.Log($"{collision.gameObject.name}");
            playerAnimator.SetBool("IsGroundedBro", true);
            isOnGround = true;
            dirtParticle.Play();
@@ -77,15 +81,16 @@ public class PlayerController : MonoBehaviour
        if (collision.gameObject.CompareTag("Obsticale"))
        {
            dirtParticle.Stop();
+           playerAnimator.SetBool("PlayAnimation", false);
            explosionParticle.Play();
            playerAudio.PlayOneShot(crashSound, 1.0f);
            if (playerMesh != null)
            {
                playerMesh.enabled = false;
            }
-           Debug.Log("Did everything else except turning off the object");
+           //Debug.Log("Did everything else except turning off the object");
            UIManager.Instance.GameOver();
-           Debug.Log("Did everything else except turning off the object");
+           //Debug.Log("Did everything else except turning off the object");
         }
    
 

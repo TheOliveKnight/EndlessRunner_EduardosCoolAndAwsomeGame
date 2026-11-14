@@ -1,42 +1,60 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-option="False">
-    <Style src="MainMenu.uss" />
-    <ui:VisualElement name="root" class="root-container">
-        
-        <!-- Persistent Gameplay UI (Only Coin Counter remains visible during gameplay) -->
-        <ui:VisualElement name="gameplay-ui" class="gameplay-ui">
-            <ui:VisualElement name="coin-counter-container" class="coin-box">
-                <ui:Label text="Coins: 0" name="coin-label" class="coin-label" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="RootContainer" picking-mode="Ignore" style="flex-grow: 1; width: 100%; height: 100%; position: relative; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PUSAB___.TTF?fileID=12800000&amp;guid=6c9ec6889b0334c44875a7faa020e7d8&amp;type=3#PUSAB___&quot;);">
+        <ui:VisualElement name="MainMenuContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(35, 35, 35); justify-content: center; align-items: center;">
+            <ui:VisualElement name="BackgroundPattern" picking-mode="Ignore" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; opacity: 0.85; background-color: rgb(255, 255, 255); background-image: url(&quot;project://database/Assets/Course%20Library/_Source_Files/Textures/Background/BackgroundDash.png?fileID=2800000&amp;guid=ab80703ba111d464c89d1272141c3747&amp;type=3#BackgroundDash&quot;); -unity-background-image-tint-color: rgb(255, 255, 255);"/>
+            <ui:VisualElement name="SettingsButtonOuter" style="position: absolute; top: 13%; right: 6.5%; background-color: white; border-radius: 14px; padding: 3px;">
+                <ui:Button name="SettingsButton" style="width: 104px; height: 104px; background-color: rgb(25, 168, 50); border-radius: 11px; border-width: 4px; border-color: black; justify-content: center; align-items: center; padding: 0;">
+                    <ui:VisualElement name="GearCircle" picking-mode="Ignore" style="width: 74px; height: 74px; border-radius: 37px; background-color: rgb(195, 195, 195); border-width: 4px; border-color: black; justify-content: center; align-items: center;">
+                        <ui:Label name="GearSymbol" text="⚙" picking-mode="Ignore" style="font-size: 56px; color: rgb(135, 135, 135); -unity-text-align: middle-center; margin-top: 16px; padding-left: 4px;"/>
+                    </ui:VisualElement>
+                </ui:Button>
             </ui:VisualElement>
-        </ui:VisualElement>
-
-        <!-- Main Menu UI (Hides when Start is pressed) -->
-        <ui:VisualElement name="main-menu-ui" class="menu-overlay">
-            <!-- Background & Corners -->
-            <ui:VisualElement class="bg-panel">
-                <ui:VisualElement class="corner top-left" />
-                <ui:VisualElement class="corner top-right" />
-                <ui:VisualElement class="corner bottom-left" />
-                <ui:VisualElement class="corner bottom-right" />
-                
-                <!-- Title -->
-                <ui:Label text="Geometry Slide" class="game-title" />
-
-                <!-- Buttons Container -->
-                <ui:VisualElement class="button-container">
-                    <ui:Button text="Start" name="start-button" class="menu-button primary-button" />
-                    <ui:Button text="⚙" name="settings-button" class="menu-button icon-button" />
+            <ui:VisualElement name="TitleBannerOuter" style="background-color: white; border-radius: 10px; padding: 5px; margin-bottom: 65px; margin-top: 40px;">
+                <ui:VisualElement name="TitleBannerInner" style="background-color: rgb(255, 230, 40); border-width: 5px; border-color: black; border-radius: 6px; padding: 14px 42px; border-bottom-width: 9px; border-bottom-color: rgb(245, 175, 25);">
+                    <ui:Label name="TitleLabel" text="Geometry Slide" style="font-size: 60px; -unity-font-style: bold; color: black; -unity-text-align: middle-center;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="StartButtonOuter" style="background-color: white; border-radius: 10px; padding: 4px;">
+                <ui:Button name="_StartButton" text="Start" data-source="project://database/Assets/UI%20Toolkit/UMX.uxml?fileID=9197481963319205126&amp;guid=78732484980f8481fbd4b78b5f526db0&amp;type=3#UMX" style="width: 245px; height: 115px; font-size: 42px; -unity-font-style: bold; color: black; background-color: rgb(255, 230, 40); border-width: 4px; border-color: black; border-radius: 6px; border-top-color: rgb(255, 246, 130); border-left-color: rgb(255, 246, 130); border-bottom-width: 8px; border-bottom-color: rgb(245, 166, 35); border-right-width: 6px; border-right-color: rgb(245, 166, 35); -unity-text-align: middle-center; padding-left: 15px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="CornerTopLeft" picking-mode="Ignore" style="position: absolute; top: 6px; left: 6px; background-color: white; border-radius: 12px; padding: 2px;">
+                <ui:VisualElement style="width: 56px; height: 56px; background-color: rgb(56, 242, 255); border-width: 3px; border-color: black; border-radius: 10px; justify-content: center; align-items: center;">
+                    <ui:VisualElement style="width: 32px; height: 32px; background-color: rgb(150, 150, 150); border-width: 2px; border-color: black; border-radius: 4px; rotate: 45deg;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="CornerTopRight" picking-mode="Ignore" style="position: absolute; top: 6px; right: 6px; background-color: white; border-radius: 12px; padding: 2px;">
+                <ui:VisualElement style="width: 56px; height: 56px; background-color: rgb(56, 242, 255); border-width: 3px; border-color: black; border-radius: 10px; justify-content: center; align-items: center;">
+                    <ui:VisualElement style="width: 32px; height: 32px; background-color: rgb(150, 150, 150); border-width: 2px; border-color: black; border-radius: 4px; rotate: 45deg;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="CornerBottomLeft" picking-mode="Ignore" style="position: absolute; bottom: 6px; left: 6px; background-color: white; border-radius: 12px; padding: 2px;">
+                <ui:VisualElement style="width: 56px; height: 56px; background-color: rgb(56, 242, 255); border-width: 3px; border-color: black; border-radius: 10px; justify-content: center; align-items: center;">
+                    <ui:VisualElement style="width: 32px; height: 32px; background-color: rgb(150, 150, 150); border-width: 2px; border-color: black; border-radius: 4px; rotate: 45deg;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="CornerBottomRight" picking-mode="Ignore" style="position: absolute; bottom: 6px; right: 6px; background-color: white; border-radius: 12px; padding: 2px;">
+                <ui:VisualElement style="width: 56px; height: 56px; background-color: rgb(56, 242, 255); border-width: 3px; border-color: black; border-radius: 10px; justify-content: center; align-items: center;">
+                    <ui:VisualElement style="width: 32px; height: 32px; background-color: rgb(150, 150, 150); border-width: 2px; border-color: black; border-radius: 4px; rotate: 45deg;"/>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-
-        <!-- Settings Page (Hidden by default, toggled via Settings button) -->
-        <ui:VisualElement name="settings-ui" class="settings-overlay" style="display: none;">
-            <ui:VisualElement class="settings-panel">
-                <ui:Label text="Settings" class="settings-title" />
-                <!-- Add your settings controls here -->
-                <ui:Button text="Back" name="settings-back-button" class="menu-button" />
+        <ui:VisualElement name="CoinCounterOuter" picking-mode="Ignore" style="position: absolute; top: 120px; left: 18px; background-color: white; border-radius: 8px; padding: 3px;">
+            <ui:VisualElement name="CoinCounterBox" style="width: 310px; height: 84px; background-color: rgb(255, 230, 40); border-width: 3px; border-color: black; border-radius: 5px; border-top-color: rgb(255, 246, 130); border-left-color: rgb(255, 246, 130); border-bottom-width: 6px; border-bottom-color: rgb(245, 166, 35); border-right-width: 5px; border-right-color: rgb(245, 166, 35); padding: 10px 16px; justify-content: flex-start;">
+                <ui:Label name="CoinCounterLabel" text="Coins Collected:" style="font-size: 18px; -unity-font-style: bold; color: black; padding-left: 10px; margin-left: -18px; padding-top: 10px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
-
+        <ui:VisualElement name="SettingsPageOverlay" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; justify-content: center; align-items: center;">
+            <ui:VisualElement name="SettingsBackdrop" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.35);"/>
+            <ui:VisualElement name="SettingsPanelOuter" style="width: 92%; height: 74%; margin-top: 3%; background-color: white; border-radius: 12px; padding: 6px;">
+                <ui:VisualElement name="SettingsPanelInner" style="flex-grow: 1; background-color: rgb(255, 230, 40); border-width: 5px; border-color: black; border-radius: 7px; border-top-width: 14px; border-top-color: rgb(255, 243, 128); border-left-width: 14px; border-left-color: rgb(255, 243, 128); border-bottom-width: 18px; border-bottom-color: rgb(245, 166, 35); border-right-width: 16px; border-right-color: rgb(245, 166, 35); padding: 26px 36px;">
+                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center;">
+                        <ui:Label name="SettingsTitleLabel" text="Settings" style="font-size: 68px; -unity-font-style: bold; color: black;"/>
+                        <ui:Button name="CloseSettingsButton" text="✕" style="width: 52px; height: 52px; font-size: 28px; -unity-font-style: bold; color: black; background-color: rgb(245, 166, 35); border-width: 3px; border-color: black; border-radius: 8px;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="SettingsDivider" style="width: 340px; height: 9px; background-color: rgb(245, 166, 35); border-radius: 5px; margin-top: 8px;"/>
+                    <ui:VisualElement name="SettingsContentContainer" style="flex-grow: 1; margin-top: 24px;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
