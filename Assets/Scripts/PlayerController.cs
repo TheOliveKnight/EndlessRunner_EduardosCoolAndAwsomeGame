@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
    [SerializeField] private float jumpForce, gravityModifier;
    [SerializeField] private ParticleSystem explosionParticle, dirtParticle;
-   [SerializeField] private AudioClip jumpSound, crashSound;
+   [SerializeField] private AudioClip crashSound;
    private Animator playerAnimator;
    private AudioSource playerAudio;
    private Rigidbody playerRb;
    private bool isOnGround;
    private float animationSpeed;
-
+   [SerializeField] private MeshRenderer playerMesh;
 
    // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
@@ -58,9 +58,8 @@ public class PlayerController : MonoBehaviour
        {
            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
            isOnGround = false;
-           playerAnimator.SetTrigger("Jump_trig");
+           playerAnimator.SetBool("IsGroundedBro", false);
            dirtParticle.Stop();
-           playerAudio.PlayOneShot(jumpSound, 1.0f);
        }
    }
 
@@ -69,6 +68,7 @@ public class PlayerController : MonoBehaviour
    {
        if (collision.gameObject.name == "Ground" && !GameManager.Instance.gameOver)
        {
+           playerAnimator.SetBool("IsGroundedBro", true);
            isOnGround = true;
            dirtParticle.Play();
        }
@@ -76,12 +76,18 @@ public class PlayerController : MonoBehaviour
 
        if (collision.gameObject.CompareTag("Obsticale"))
        {
-           playerAnimator.SetBool("Death_b", true);
            dirtParticle.Stop();
            explosionParticle.Play();
            playerAudio.PlayOneShot(crashSound, 1.0f);
-           GameManager.Instance.GameOver();
-       }
+           if (playerMesh != null)
+           {
+               playerMesh.enabled = false;
+           }
+           Debug.Log("Did everything else except turning off the object");
+           UIManager.Instance.GameOver();
+           Debug.Log("Did everything else except turning off the object");
+        }
+   
 
 
    }
@@ -92,7 +98,7 @@ public class PlayerController : MonoBehaviour
        if(other.gameObject.CompareTag("Scoreable"))
        {
            Debug.Log("Received a Score");
-           UIManager.Instance.UpdateScore(5);
+           //UIManager.Instance.UpdateScore(5);
        }
    }
 }

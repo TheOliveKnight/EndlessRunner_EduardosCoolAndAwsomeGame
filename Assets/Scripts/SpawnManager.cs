@@ -4,9 +4,11 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
    [SerializeField] private GameObject obstaclePrefab;
-   private Vector3 spawnPos = new Vector3(25, 6, 0);
+   [SerializeField] private bool SpawnObstickles;
+   private Vector3 spawnPos = new Vector3(30, 6, 0);
    private float startDelay = 2;
    private float repeatRate = 2;
+
 
 
    // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,14 +21,17 @@ public class SpawnManager : MonoBehaviour
    // Update is called once per frame
    void SpawnObstacle()
    {
-       if (!GameManager.Instance.gameOver)
-       {
+    if (!SpawnObstickles)
+        {
+            return;
+        }
+            if (!GameManager.Instance.gameOver)
+        
            Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
            if (GameManager.Instance.gameOver)
            {
                CancelInvoke();
            }
-       }
+        }
       
-   }
-}
+        }

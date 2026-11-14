@@ -3,51 +3,31 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-   private float currentSpeedBG;
-   private Vector3 startPosBG;
-   private float repeatWidthBG;
+   [SerializeField] private float currentSpeed;
+   private Vector3 startPos;
+   [SerializeField] private float repeatWidth;
 
-   private float currentSpeedFG; 
-   private Vector3 startPosFG;
-   private float repeatWidthFG;
    void Start()
    {
-       startPosBG = transform.position;
-       repeatWidthBG = GetComponent<BoxCollider>().size.x / 2;
-
-       startPosFG = transform.position;
-       repeatWidthFG = GetComponent<BoxCollider>().size.x / 1;
+       startPos = transform.position;
    }
 
 
    // Update is called once per frame
    void Update()
    {
-       currentSpeedBG = GameManager.Instance.BackgroundSpeed;
-       MoveToTheLeftBG();
-       DeleteOutOfScene();
-       MoveToStart();
-
-       currentSpeedFG = GameManager.Instance.FloorgroundSpeed;
-       MoveToTheLeftFG();
+       MoveToTheLeft();
        DeleteOutOfScene();
        MoveToStart();
    }
 
 
    // Moves the attached GameObject left in the scene
-   private void MoveToTheLeftBG()
+   private void MoveToTheLeft()
    {
        if(!GameManager.Instance.gameOver)
        {
-           transform.Translate(Vector3.left * Time.deltaTime * currentSpeedBG);
-       }
-   }
-    private void MoveToTheLeftFG()
-   {
-       if(!GameManager.Instance.gameOver)
-       {
-           transform.Translate(Vector3.left * Time.deltaTime * currentSpeedFG);
+           transform.Translate(Vector3.left * Time.deltaTime * currentSpeed);
        }
    }
 
@@ -63,13 +43,13 @@ public class MoveLeft : MonoBehaviour
 
    private void MoveToStart()
    {
-       if(gameObject.tag == "Background" && transform.position.x < startPosBG.x - repeatWidthBG)
+        if(gameObject.tag != "Obsticale")
+        {
+       if(gameObject.tag == "Background" && transform.position.x < repeatWidth)
        {
-           transform.position = startPosBG;
+           transform.position = startPos;
        }
-       if(gameObject.tag == "FloorGround" && transform.position.x < startPosFG.x - repeatWidthFG)
-       {
-           transform.position = startPosFG;
+        }
+
        }
    }
-}

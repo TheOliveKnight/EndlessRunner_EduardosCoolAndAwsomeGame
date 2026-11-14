@@ -1,0 +1,42 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-option="False">
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement name="root" class="root-container">
+        
+        <!-- Persistent Gameplay UI (Only Coin Counter remains visible during gameplay) -->
+        <ui:VisualElement name="gameplay-ui" class="gameplay-ui">
+            <ui:VisualElement name="coin-counter-container" class="coin-box">
+                <ui:Label text="Coins: 0" name="coin-label" class="coin-label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Main Menu UI (Hides when Start is pressed) -->
+        <ui:VisualElement name="main-menu-ui" class="menu-overlay">
+            <!-- Background & Corners -->
+            <ui:VisualElement class="bg-panel">
+                <ui:VisualElement class="corner top-left" />
+                <ui:VisualElement class="corner top-right" />
+                <ui:VisualElement class="corner bottom-left" />
+                <ui:VisualElement class="corner bottom-right" />
+                
+                <!-- Title -->
+                <ui:Label text="Geometry Slide" class="game-title" />
+
+                <!-- Buttons Container -->
+                <ui:VisualElement class="button-container">
+                    <ui:Button text="Start" name="start-button" class="menu-button primary-button" />
+                    <ui:Button text="⚙" name="settings-button" class="menu-button icon-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Settings Page (Hidden by default, toggled via Settings button) -->
+        <ui:VisualElement name="settings-ui" class="settings-overlay" style="display: none;">
+            <ui:VisualElement class="settings-panel">
+                <ui:Label text="Settings" class="settings-title" />
+                <!-- Add your settings controls here -->
+                <ui:Button text="Back" name="settings-back-button" class="menu-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>
