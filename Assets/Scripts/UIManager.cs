@@ -42,9 +42,9 @@ public class UIManager : MonoBehaviour
 
        // Query the 4 visual elements from the UXML root
        _scoreLabel = root.Q<Label>("scoreLabel");
-       _timeLabel = root.Q<Label>("timeLabel");
+       _timeLabel = root.Q<Label>("CoinCounterLabel");
        _timerRadio = root.Q<RadioButtonGroup>("timerRadio");
-       _StartButton = root.Q<Button>("_StartButton");
+       _StartButton = root.Q<Button>("startButton");
        
        // Hid the countdown time before starting 
        _timeLabel.style.visibility = Visibility.Hidden;
@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
            _timeLabel.style.visibility = Visibility.Visible;
            InvokeRepeating("Timer", 0, 1);
        }
-       _timerRadio.style.visibility = Visibility.Hidden;
+       //_timerRadio.style.visibility = Visibility.Hidden;
        _StartButton.style.visibility = Visibility.Hidden;
        GameManager.Instance.gameOver = false;
        GameManager.Instance.startGame = true;
@@ -125,7 +125,7 @@ public class UIManager : MonoBehaviour
    public void GameOver()
    {
        GameManager.Instance.gameOver = true;
-       //Debug.Log($"{GameManager.Instance.gameOver}");
+       Debug.Log($"{GameManager.Instance.gameOver}");
        _timeLabel.style.visibility = Visibility.Visible;
        _timeLabel.text = "Game Over";
    }

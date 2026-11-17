@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="RootContainer" picking-mode="Ignore" style="flex-grow: 1; width: 100%; height: 100%; position: relative; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PUSAB___.TTF?fileID=12800000&amp;guid=6c9ec6889b0334c44875a7faa020e7d8&amp;type=3#PUSAB___&quot;);">
         <ui:VisualElement name="MainMenuContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(35, 35, 35); justify-content: center; align-items: center;">
-            <ui:VisualElement name="BackgroundPattern" picking-mode="Ignore" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; opacity: 0.85; background-color: rgb(255, 255, 255); background-image: url(&quot;project://database/Assets/Course%20Library/_Source_Files/Textures/Background/BackgroundDash.png?fileID=2800000&amp;guid=ab80703ba111d464c89d1272141c3747&amp;type=3#BackgroundDash&quot;); -unity-background-image-tint-color: rgb(255, 255, 255);"/>
+            <ui:VisualElement name="BackgroundPattern" picking-mode="Ignore" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; opacity: 0.85; background-color: rgba(255, 255, 255, 0); background-image: none; -unity-background-image-tint-color: rgb(255, 255, 255);"/>
             <ui:VisualElement name="SettingsButtonOuter" style="position: absolute; top: 13%; right: 6.5%; background-color: white; border-radius: 14px; padding: 3px;">
                 <ui:Button name="SettingsButton" style="width: 104px; height: 104px; background-color: rgb(25, 168, 50); border-radius: 11px; border-width: 4px; border-color: black; justify-content: center; align-items: center; padding: 0;">
                     <ui:VisualElement name="GearCircle" picking-mode="Ignore" style="width: 74px; height: 74px; border-radius: 37px; background-color: rgb(195, 195, 195); border-width: 4px; border-color: black; justify-content: center; align-items: center;">
@@ -15,7 +15,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="StartButtonOuter" style="background-color: white; border-radius: 10px; padding: 4px;">
-                <ui:Button name="_StartButton" text="Start" data-source="project://database/Assets/UI%20Toolkit/UMX.uxml?fileID=9197481963319205126&amp;guid=78732484980f8481fbd4b78b5f526db0&amp;type=3#UMX" style="width: 245px; height: 115px; font-size: 42px; -unity-font-style: bold; color: black; background-color: rgb(255, 230, 40); border-width: 4px; border-color: black; border-radius: 6px; border-top-color: rgb(255, 246, 130); border-left-color: rgb(255, 246, 130); border-bottom-width: 8px; border-bottom-color: rgb(245, 166, 35); border-right-width: 6px; border-right-color: rgb(245, 166, 35); -unity-text-align: middle-center; padding-left: 15px;"/>
+                <ui:Button name="startButton" text="Start" data-source="project://database/Assets/UI%20Toolkit/UMX.uxml?fileID=9197481963319205126&amp;guid=78732484980f8481fbd4b78b5f526db0&amp;type=3#UMX" style="width: 245px; height: 115px; font-size: 42px; -unity-font-style: bold; color: black; background-color: rgb(255, 230, 40); border-width: 4px; border-color: black; border-radius: 6px; border-top-color: rgb(255, 246, 130); border-left-color: rgb(255, 246, 130); border-bottom-width: 8px; border-bottom-color: rgb(245, 166, 35); border-right-width: 6px; border-right-color: rgb(245, 166, 35); -unity-text-align: middle-center; padding-left: 15px;"/>
             </ui:VisualElement>
             <ui:VisualElement name="CornerTopLeft" picking-mode="Ignore" style="position: absolute; top: 6px; left: 6px; background-color: white; border-radius: 12px; padding: 2px;">
                 <ui:VisualElement style="width: 56px; height: 56px; background-color: rgb(56, 242, 255); border-width: 3px; border-color: black; border-radius: 10px; justify-content: center; align-items: center;">
@@ -38,7 +38,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="CoinCounterOuter" picking-mode="Ignore" style="position: absolute; top: 120px; left: 18px; background-color: white; border-radius: 8px; padding: 3px;">
+        <ui:VisualElement name="CoinCounterOuter" picking-mode="Ignore" style="position: absolute; top: 89px; left: 8px; background-color: white; border-radius: 8px; padding: 3px; translate: 0 0;">
             <ui:VisualElement name="CoinCounterBox" style="width: 310px; height: 84px; background-color: rgb(255, 230, 40); border-width: 3px; border-color: black; border-radius: 5px; border-top-color: rgb(255, 246, 130); border-left-color: rgb(255, 246, 130); border-bottom-width: 6px; border-bottom-color: rgb(245, 166, 35); border-right-width: 5px; border-right-color: rgb(245, 166, 35); padding: 10px 16px; justify-content: flex-start;">
                 <ui:Label name="CoinCounterLabel" text="Coins Collected:" style="font-size: 18px; -unity-font-style: bold; color: black; padding-left: 10px; margin-left: -18px; padding-top: 10px;"/>
             </ui:VisualElement>
